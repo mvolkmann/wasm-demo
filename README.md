@@ -23,3 +23,5 @@ To build and run this:
 
 1. Browse localhost:{port} where port
    is the port on which the local server is listening.
+
+See this [wat2wasm issue](https://github.com/WebAssembly/wabt/issues/1611).
