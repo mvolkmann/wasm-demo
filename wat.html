@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      WebAssembly.instantiateStreaming(fetch('math.wasm')).then(m => {
+        const {distance, sum} = m.instance.exports;
+        document.getElementById('sum').textContent = sum(19, 3);
+        document.getElementById('distance').textContent = distance(1, 2, 4, 6);
+      });
+    </script>
+  </head>
+  <body>
+    <div>sum = <span id="sum"></span></div>
+    <div>distance = <span id="distance"></span></div>
+  </body>
+</html>
