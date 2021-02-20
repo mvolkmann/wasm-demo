@@ -2,10 +2,16 @@
 <html>
   <head>
     <script>
+      function distance(x1, y1, x2, y2) {
+        return Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2);
+      }
+
+      console.log('distance =', distance(2, 3, 5, 7));
+
       WebAssembly.instantiateStreaming(fetch('math.wasm')).then(m => {
         const {distance, sum} = m.instance.exports;
         document.getElementById('sum').textContent = sum(19, 3);
-        document.getElementById('distance').textContent = distance(1, 2, 4, 6);
+        document.getElementById('distance').textContent = distance(2, 3, 5, 7);
       });
     </script>
   </head>
