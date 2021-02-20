@@ -1,6 +1,9 @@
 {
   "cSpell.words": [
     "WABT",
-    "interp"
+    "bindgen",
+    "cdylib",
+    "interp",
+    "powi"
   ]
 }

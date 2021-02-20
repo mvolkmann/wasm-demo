@@ -1,2 +1,3 @@
-target
+rust-math/pkg
+rust-math/target
 *.wasm

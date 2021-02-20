@@ -1,7 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="index.js"></script>
+    <script type="module">
+      import init, {distance, sum} from './rust-math/pkg/rust_math.js';
+
+      async function run() {
+        await init();
+        document.getElementById('sum').textContent = sum(1, 2);
+        document.getElementById('distance').textContent = distance(2, 3, 5, 7);
+      }
+
+      run();
+    </script>
   </head>
   <body>
     <div>sum = <span id="sum"></span></div>
