@@ -50,9 +50,7 @@ pub fn greet() {
 
 #[wasm_bindgen]
 pub fn sum(a: i32, b: i32) -> i32 {
-    let s = a + b;
-    println!("From WASM: Sum is: {:?}", s);
-    s
+    a + b
 }
 
 #[wasm_bindgen]

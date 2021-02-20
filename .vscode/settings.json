@@ -4,6 +4,9 @@
     "bindgen",
     "cdylib",
     "interp",
-    "powi"
+    "powi",
+    "rustup",
+    "wasi",
+    "wasmtime"
   ]
 }

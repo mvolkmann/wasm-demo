@@ -54,5 +54,15 @@ To build and run this:
 
 ## Running outside a web browser
 
-WASM code can be run outside of a web browser as described here:
-<https://alexene.dev/2020/08/17/webassembly-without-the-browser-part-1.html>.
+WASM code can be run outside of a web browser.
+To try this:
+
+1. Enter `rustup target add wasm32-wasi`.
+1. Enter `cargo new demo`
+1. Enter `cd demo`
+1. Enter `cargo build --target wasm32-wasi`
+1. Install the Wasmtime CLI by entering
+   `curl https://wasmtime.dev/install.sh -sSf | bash`
+1. Open a new terminal.
+1. Run the program by entering
+   `wasmtime target/wasm32-wasi/debug/demo.wasm`

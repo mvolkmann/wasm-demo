@@ -1,3 +1,4 @@
 rust/pkg
 rust/target
+rust2/target
 *.wasm
