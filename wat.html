@@ -2,16 +2,54 @@
 <html>
   <head>
     <script>
-      function distance(x1, y1, x2, y2) {
+      function randomPoints(count) {
+        const points = [];
+        for (let i = 0; i < count; i++) {
+          const x = Math.random() * 100;
+          const y = Math.random() * 100;
+          points.push([x, y]);
+        }
+        return points;
+      }
+
+      const COUNT = 1000000;
+      const points = randomPoints(COUNT);
+
+      function jsDist(x1, y1, x2, y2) {
         return Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2);
       }
 
-      console.log('distance =', distance(2, 3, 5, 7));
+      let lastPoint = [0, 0];
+      let total = 0;
+      const startMs = Date.now();
+      for (const point of points) {
+        const d = jsDist(...lastPoint, ...point);
+        total += d;
+        lastPoint = point;
+      }
+      const endMs = Date.now();
+      console.log('js total =', total);
+      console.log('JavaScript time =', endMs - startMs, 'ms');
 
       WebAssembly.instantiateStreaming(fetch('math.wasm')).then(m => {
-        const {distance, sum} = m.instance.exports;
+        const {distance, distance2, distance3, sum} = m.instance.exports;
         document.getElementById('sum').textContent = sum(19, 3);
         document.getElementById('distance').textContent = distance(2, 3, 5, 7);
+        console.log('distance1 =', distance(2, 3, 5, 7));
+        console.log('distance2 =', distance2(2, 3, 5, 7));
+        console.log('distance3 =', distance3(2, 3, 5, 7));
+
+        let total = 0;
+        let lastPoint = [0, 0];
+        const startMs = Date.now();
+        for (const point of points) {
+          const d = distance2(...lastPoint, ...point);
+          total += d;
+          lastPoint = point;
+        }
+        const endMs = Date.now();
+        console.log('wasm total =', total);
+        console.log('wasm time =', endMs - startMs, 'ms');
       });
     </script>
   </head>

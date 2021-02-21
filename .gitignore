@@ -1,4 +1,5 @@
 rust/pkg
 rust/target
 rust2/target
+rust-math/target
 *.wasm
